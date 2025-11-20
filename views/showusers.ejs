@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="grid place-items-center">
+        <header class="w-full bg-gradient-to-b from-teal-300 to-indigo-500 w-full h-[15vh] text-4xl grid place-items-center font-mono">
+            <h1>All Users List</h1>
+        </header>
+        <section class="w-full h-[83vh] bg-gradient-to-b from-indigo-500 to-teal-400 flex flex-wrap p-10 tracking-tighter gap-5">
+            <% if(users.length > 0){ %>
+                <% users.map((user) => { %>
+                <div class="bg-purple-400 p-2 h-76 grid place-items-center rounded-lg">
+                <div class="bg-indigo-400 h-46 w-46 rounded-xl items-center judtify-center overflow-hidden">
+                    <img class="h-full w-full object-cover object-center" src="<%= user.image%>" alt="Loading">
+                </div>
+                <h2 class="text-2xl"><%= user.name %></h2>
+                <h3><%= user.email %></h3>
+                <div class="flex text-center">
+                    <a href="/edit/<%= user._id%>" class="flex-1 p-1 ">Edit</a>
+                    <a href="/delete/<%= user._id%>" class="flex-1 p-1 text-red-300">Delete</a>
+                </div>
+            </div>
+            <% })%>
+            <% } else {%>
+                <div >
+                    <h1 class="text-5xl font-mono">No users found in the DATABASE</h1>
+                </div>
+            <%}%>
+        </section>
+        <footer class="h-[2vh] bg-teal-300 w-full text-right">
+            <a href="/">Go to Home Page</a>
+        </footer>
+    </div>
+</body>
+</html>
